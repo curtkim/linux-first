@@ -1,7 +1,8 @@
-## howto
+## build
     
     docker build -t opengl .
 
+## without --gpus all
     docker run -ti --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/home/deploy/.Xauthority opengl bash
     
     glxinfo
@@ -10,7 +11,7 @@
     libGL error: failed to load driver: swrast
     Error: couldn't find RGB GLX visual or fbconfig    
 
-    ## --gpus all
+## with --gpus all
 
     docker run --gpus all -ti --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/home/deploy/.Xauthority opengl bash
 
@@ -23,3 +24,8 @@
     server glx extensions:
         GLX_ARB_context_flush_control, GLX_ARB_create_context, 
         GLX_ARB_create_context_no_error, GLX_ARB_create_context_profile,        
+
+## force DISPLAY
+
+    DISPLAY= glxgears    
+    Error: couldn't open display         
